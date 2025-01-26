@@ -1,0 +1,117 @@
+/* Allgemeines Layout für das Einstellungsformular */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.5s; /* Weicher Übergang der Hintergrundfarbe */
+}
+
+.settings-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Label für Eingabefelder - linksbündig */
+.setting label {
+    text-align: left;
+    font-weight: bold;
+}
+
+.setting input,
+.setting select {
+    padding: 10px;
+    font-size: 16px;
+    text-align: right;
+    width: calc(100% - 20px); /* Berechnung, die auch das Padding berücksichtigt */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    box-sizing: border-box; /* Verhindert, dass Padding die Gesamtbreite verändert */
+}
+
+/* Layout für Checkbox-Gruppen */
+.checkbox-group {
+    display: flex;
+    align-items: flex-start; /* Links ausrichten */
+    justify-content: flex-start; /* Sorgt dafür, dass alles links bleibt */
+    gap: 8px;               /* Abstand zwischen Checkbox und Text */
+}
+
+/* Checkbox spezifisch stylen */
+.checkbox-group input[type="checkbox"] {
+    margin: 0;              /* Entfernt unnötige Abstände */
+    transform: scale(1.2);  /* Optional: Vergrößert die Checkbox */
+}
+
+/* Optional: Label-Stil für Lesbarkeit */
+.checkbox-group label {
+    margin: 0;              /* Kein zusätzlicher Abstand */
+    font-size: 16px;        /* Einheitliche Schriftgröße */
+}
+
+input {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Checkbox */
+.setting input[type="checkbox"] {
+    margin: 0; /* Kein zusätzlicher Abstand */
+}
+
+/* Text direkt hinter der Checkbox */
+.setting label {
+    margin-left: 5px; /* Minimaler Abstand zwischen Checkbox und Text */
+}
+
+/* Button Styling */
+button {
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Optional: Wenn du das Aussehen der Checkbox anpassen möchtest */
+.setting input[type="checkbox"] {
+    transform: scale(1.2);  /* Erhöht die Größe der Checkbox */
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+

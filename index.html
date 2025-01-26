@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einstellungen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="settings-container">
+        <h1>Einstellungen für die Übung</h1>
+
+        <form id="settings-form">
+            <!-- Aufgabenanzeige-Einstellungen -->
+            <div class="setting">
+                <label for="displayMode">Aufgaben anzeigen als:</label>
+                <select id="displayMode" name="displayMode">
+                    <option value="both">Beides (anzeigen und vorlesen)</option>
+                    <option value="visual">Nur anzeigen</option>
+                    <option value="audio">Nur vorlesen</option>
+                </select>
+            </div>
+
+            <!-- Schwierigkeitseinstellungen -->
+            <div class="setting">
+                <label for="numTasks">Aufgaben pro Übung:</label>
+                <input type="number" id="numTasks" name="numTasks" value="25" min="1">
+            </div>
+
+            <div class="setting">
+                <label for="timePerTask">Maximale Zeit pro Aufgabe (in Sekunden):</label>
+                <input type="number" id="timePerTask" name="timePerTask" value="30" min="1">
+            </div>
+            
+            <div class="setting checkbox-group">
+                <label for="ShowTimer">Timeranzeige</label>
+                <input type="checkbox" id="ShowTimer" checked>
+            </div>
+
+            <div class="setting checkbox-group">
+                <label for="ShowResult">Ergebnisanzeige</label>
+                <input type="checkbox" id="ShowResult" checked>
+            </div>
+
+            <!-- Mathematik-Einstellungen: Zahlenbereiche -->
+            <h1>Einstellungen zum Inhalt der Übungen</h1>
+            <div class="setting">
+                <label for="maxAdd">Maximaler Wert für Addition:</label>
+                <input type="number" id="maxAdd" name="maxAdd" value="3000" min="1">
+            </div>
+
+            <div class="setting">
+                <label for="maxSub">Maximaler Wert für Subtraktion:</label>
+                <input type="number" id="maxSub" name="maxSub" value="3000" min="1">
+            </div>
+
+            <div class="setting">
+                <label for="maxMultiplier">Maximaler Multiplikator (1 bis):</label>
+                <input type="number" id="maxMultiplier" name="maxMultiplier" value="99" min="1">
+            </div>
+
+            <div class="setting">
+                <label for="maxDividend">Maximaler Divident (1 bis):</label>
+                <input type="number" id="maxDividend" name="maxDividend" value="999" min="1">
+            </div>
+
+            <div class="setting">
+                <label for="maxDivisor">Maximaler Divisor (1 bis):</label>
+                <input type="number" id="maxDivisor" name="maxDivisor" value="99" min="1">
+            </div>
+
+            <div class="setting">
+                <label for="maxSquare">Maximale Quadratzahl (1 bis):</label>
+                <input type="number" id="maxSquare" name="maxSquare" value="30" min="1">
+            </div>
+
+            <div class="setting">
+                <label for="maxCube">Maximale Kubikzahl (1 bis):</label>
+                <input type="number" id="maxCube" name="maxCube" value="10" min="1">
+            </div>
+
+            <div class="setting">
+                <label for="maxSquareRoot">Maximaler Radikand für Quadratwurzeln (1 bis):</label>
+                <input type="number" id="maxSquareRoot" name="maxSquareRoot" value="30" min="1">
+            </div>
+
+            <div class="setting">
+                <label for="maxCubeRoot">Maximaler Radikand für Kubikwurzeln (1 bis):</label>
+                <input type="number" id="maxCubeRoot" name="maxCubeRoot" value="10" min="1">
+            </div>
+
+            <!-- Aktivierung der verschiedenen Aufgabentypen -->
+            <div class="setting">
+                <label>Welche Aufgabentypen sollen enthalten sein?</label>
+                <div>
+                    <input type="checkbox" id="includeAdd" checked>
+                    <label for="includeAdd">Addition</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="includeSub" checked>
+                    <label for="includeSub">Subtraktion</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="includeMultiplication" checked>
+                    <label for="includeMultiplication">Multiplikation</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="includeDivision" checked>
+                    <label for="includeDivision">Division</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="includeSquare" checked>
+                    <label for="includeSquare">Quadratzahlen</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="includeCube" checked>
+                    <label for="includeCube">Kubikzahlen</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="includeSquareRoot" checked>
+                    <label for="includeSquareRoot">Quadratwurzeln</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="includeCubeRoot" checked>
+                    <label for="includeCubeRoot">Kubikwurzeln</label>
+                </div>
+            </div>
+
+            <!-- Startbutton -->
+            <button type="submit">Übung starten</button>
+        </form>
+    </div>
+
+    <script src="settings.js"></script>
+</body>
+</html>

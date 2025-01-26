@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        .correct {
+            background-color: #d4edda;
+        }
+
+        .incorrect {
+            background-color: #f8d7da;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const results = JSON.parse(localStorage.getItem("exerciseResults")) || [];
+
+            const tableBody = document.getElementById("results-body");
+
+            results.forEach((result, index) => {
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${result.type}</td>
+                    <td>${result.task}</td>
+                    <td>${result.givenAnswer}</td>
+                    <td>${result.correctAnswer}</td>
+                    <td>${result.timeTaken}s</td>
+                    <td class="${result.isCorrect ? 'correct' : 'incorrect'}">${result.isCorrect ? 'Correct' : 'Incorrect'}</td>
+                `;
+
+                tableBody.appendChild(row);
+            });
+
+            // Download results as CSV
+            document.getElementById("download-btn").addEventListener("click", function () {
+                const csvContent = generateCSV(results);
+                const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+                const url = URL.createObjectURL(blob);
+
+                // Get current timestamp
+                const timestamp = getCurrentTimestampForFilename();
+                const downloadLink = document.createElement("a");
+                downloadLink.href = url;
+                downloadLink.download = `Results_${timestamp}.csv`;
+                downloadLink.click();
+                URL.revokeObjectURL(url);
+            });
+
+            function generateCSV(data) {
+                const now = new Date();
+                const currentDateTime = now.toISOString().replace("T", " ").split(".")[0]; // Format: YYYY-MM-DD HH:mm:ss
+                const header = [
+                    `Generated on: ${currentDateTime}`,
+                    "#,Task Type,Task,Your Answer,Correct Answer,Time Taken (s),Status"
+                ];
+                const rows = data.map((result, index) => [
+                    index + 1,
+                    result.type,
+                    result.task,
+                    result.givenAnswer,
+                    result.correctAnswer,
+                    result.timeTaken,
+                    result.isCorrect ? "Correct" : "Incorrect"
+                ]);
+
+                // Combine header and rows
+                return [header[0], header[1], ...rows.map(row => row.join(","))].join("\n");
+            }
+
+            function getCurrentTimestampForFilename() {
+                const now = new Date();
+                const year = now.getFullYear();
+                const month = String(now.getMonth() + 1).padStart(2, "0");
+                const day = String(now.getDate()).padStart(2, "0");
+                const hours = String(now.getHours()).padStart(2, "0");
+                const minutes = String(now.getMinutes()).padStart(2, "0");
+                const seconds = String(now.getSeconds()).padStart(2, "0");
+
+                return `${year}-${month}-${day}_${hours}-${minutes}-${seconds}`;
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Results</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Task Type</th>
+                    <th>Task</th>
+                    <th>Your Answer</th>
+                    <th>Correct Answer</th>
+                    <th>Time Taken</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="results-body">
+                <!-- Results will be dynamically added here -->
+            </tbody>
+        </table>
+        <p></p>
+        <button onclick="location.href='index.html'">Return to Main Menu</button>
+        <button id="download-btn">Download Results as CSV</button>
+    </div>
+</body>
+</html>
